@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/">
+        <h3>Trend<span>N</span></h3>
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="open-navbar1">
+      <ul class="navbar-nav">
+        <li> <a href="/home">Products</a></li>
+        <% if ( userFullName) { %>
+        <li>
+          <a> Hi <%=userFullName%> </a>
+        </li>
+        <li> 
+          <a href="/sign-out">Sign out</a> 
+        </li>
+        <% } else { %>
+        <li>
+          <a href="/sign-in">Sign In or Sign Up</a>
+        </li>
+        <% } %>
+        <li> <a href="/upload">Upload Fashion Post </a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="photo-container">
+    <div class="grid-container">
+      <% for(var i =0 ;i < post.length; i++) { %>
+      <div>
+        <img class='grid-item grid-item-<%= i %>' src='uploads/<%= post[i].img%>' alt=''>
+        <p> <%= post[i].brand%></p>
+      </div>
+      <% } %>
+
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+h1, button {
+    font-family: "Major Mono Display";
+}
+
+    .form {
+        padding-top: -10%; 
+    }
+
+    button {
+        color: lightblue;
+    }

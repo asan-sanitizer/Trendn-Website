@@ -1,0 +1,80 @@
+<%- include("header.ejs") %>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Home.css  -->
+    <link rel="stylesheet" href="css/home.css">
+
+    <form action="/filter" class="container mx-auto"  method="POST">
+        <div class="flex flex-wrap -mx-3 mb-3">
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    Fashion Style 
+                </label>
+                <div class="relative">
+                    <select name="filter" class="block appearance-none w-full bg-white-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                        <option value="bohemian"> Bohemian</option>
+                        <option value="formal"> Formal</option>
+                        <option value="afropunk"> Afropunk</option>
+                        <option value="emo"> Emo</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-8 h-12 mt-4 border border-blue-500 hover:border-transparent rounded">
+                filter  
+            </button>
+        </div>
+    </form>
+
+    <div class="container sm mx-auto">
+        <button class="bg-indigo-500  font-bold py-2 px-4 rounded inline-flex items-center">
+            <a class="text-white" href="/upload">new fashion post</a>
+        </button>
+    </div>
+    
+    <% if(!post) { %>
+    <div class="container lg mt-8 mx-auto">
+        <h4> no post found </h4>
+    </div>
+        
+    <% } else  { %> 
+    <div class="min-h-screen  flex  flex-row flex-wrap justify-center items-center">
+
+        <% for(var i=0; i<post.length; i++) { %>
+        <div class="max-w-sm mx-4 bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
+            <div id="header" class="flex items-center mb-4"> 
+                <img  class="w-20 rounded-full border-2 border-gray-300" src="uploads/<%= post[i].img %>" />
+                <div id="header-text" class="leading-5 ml-6 sm">
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].postId %> </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].brand %> </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].category %> </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].price %> $ </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].quantity %> in stock </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].size %> </h4>
+                    <h4 id="name" class="text-xl font-semibold"> <%= post[i].style %> </h4>
+                </div>
+                <div class="more position-relative" style="cursor: pointer;">
+                    <div class="options card rounded-pill shadow-sm p-1 position-absolute">
+                        <form method="GET" action="/get/<%= post[i]._id%>">
+                            <button class="rounded-circle p-2 mb-2" style="background:magenta;">
+                                <i class="material-icons" style="color:white">edit</i>
+                            </button>
+                        </form>
+
+                        <form method="GET" action="/delete/<%= post[i]._id%>">
+                            <button class="rounded-circle p-2 mb-2" style="background:cyan;">
+                                <i class="material-icons" style="color:black">delete</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+    </div>
+
+    </div>
+    <% } %>

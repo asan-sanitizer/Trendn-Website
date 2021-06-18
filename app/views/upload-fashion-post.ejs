@@ -1,0 +1,81 @@
+<%- include("header.ejs") %>
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+  h1, button {
+    font-family: "Major Mono Display";
+  }
+
+  .form {
+   padding-top: -10%; 
+ }
+
+ button {
+  color: lightblue;
+}
+</style>
+<br>
+<br>
+<br>
+<div class="flex form items-center h-screen w-full bg-teal-lighter">
+  <div class="w-full bg-white rounded shadow-lg p-8 m-4">
+    <h1 class="block w-full text-center text-lg font-bold text-grey-darkest mb-6"> Add Fashion Post </h1>
+    
+    <form class="mb-4" action="/upload" method="post" enctype="multipart/form-data">
+
+      <div class="flex flex-col mb-4">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="first_name"> Category </label>
+        <select class="border py-2 px-3 text-grey-darkest" type="text" name="category" id="first_name">
+          <option value="men"> men </option>
+          <option value="women"> women </option>
+          <option value="kids"> kids </option>
+        </select>
+      </div>
+
+      <div class="flex flex-col mb-4">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest"> Size </label>
+        <select class="border py-2 px-3 text-grey-darkest" type="text" name="size" >
+          <option> small </option>
+          <option> medium </option>
+          <option> large </option>
+        </select>
+      </div>
+
+      <div class="flex flex-col mb-4">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" > Image </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="file" name="img" >
+      </div>
+
+      <div class="flex flex-col mb-4">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" > Brand  </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="text" name="brand">
+      </div>
+
+      <div class="flex flex-col mb-4">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" >Quantity </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="number" name="quantity">
+      </div>
+
+      <div class="flex flex-col mb-6">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" > Price </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="number" name="price" >
+      </div>
+
+      <div class="flex flex-col mb-6">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" >Rating </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="number" name="rating" >
+      </div>
+
+      <div class="flex flex-col mb-6">
+        <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" > Style  </label>
+        <input class="border py-2 px-3 text-grey-darkest" type="text" name="style" >
+      </div>
+
+      <button class="block bg-black uppercase text-lg mx-auto p-4 rounded" type="submit">
+        Upload Fashion Post  
+      </button>
+    </form>
+  </div>
+</div>
